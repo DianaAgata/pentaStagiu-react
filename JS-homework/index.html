@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Homework</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        (function(){
+            
+            var menu = document.createElement("section");
+            var nav = document.createElement("nav");
+            var tab1 = document.createElement("div");
+            var tab2 = document.createElement("div");
+            var tab3 = document.createElement("div");
+            var tab4 = document.createElement("div");
+            var main = document.createElement("section");
+            var title = document.createElement("h1");
+            var content = document.createElement("div");
+
+            var myPicture = document.createElement("img");
+
+            var linkedIn = document.createElement("img");
+            var facebook = document.createElement("img");
+
+            var button = document.createElement("button");
+            var linkedInClicked = false;
+            var facebookClicked = false;
+
+            document.body.appendChild(menu);
+            menu.appendChild(nav);
+            nav.appendChild(tab1);
+            nav.appendChild(tab2);
+            nav.appendChild(tab3);
+            nav.appendChild(tab4);
+            document.body.appendChild(main);
+            main.appendChild(title);
+            main.appendChild(content);
+
+            nav.style.backgroundColor = "lightSalmon";
+            nav.style.lineHeight = "3rem";
+            nav.style.fontSize = "1.5rem";
+            nav.style.display = "flex";
+            nav.style.justifyContent = "space-evenly";
+            content.style.fontSize = "1.2rem";
+            
+            tab1.innerHTML = "Home";
+            tab2.innerHTML = "About me";
+            tab3.innerHTML = "Contact";
+            tab4.innerHTML = "Arithmetic average";
+           
+        
+            document.body.style.backgroundColor = "black";
+            document.body.style.color = "white";
+
+            title.innerText = "This is the first time you access this project or you refreshed the page."
+
+            tab1.addEventListener("mouseover", function(e){
+                tab1.style.cursor = "pointer";
+                tab1.style.backgroundColor = "salmon";
+            });
+            tab1.addEventListener("mouseleave", function(e){
+                tab1.style.backgroundColor = "lightSalmon";
+            });
+            tab1.addEventListener("click", function(e){
+                title.innerText = "JavaScript";
+                content.innerText = "This is the second homework for this wonderfull PentaStagiu remote course. All you see on this page is made using only Vanilla JavaScript"
+            });
+
+            tab2.addEventListener("mouseover", function(e){
+                tab2.style.cursor = "pointer";
+                tab2.style.backgroundColor = "salmon";
+            });
+            tab2.addEventListener("mouseleave", function(e){
+                tab2.style.backgroundColor = "lightSalmon";
+            });
+            tab2.addEventListener("click", function(e){
+                title.innerText = "Diana Agata Leonte";
+                content.innerText = "I am an intelligent, positive and friendly person, with good communication skills, quick learner, creative and result orientated with a high interest in continuous development. My motto : There is nothing too hard if you want to achieve it.";
+                content.appendChild(myPicture); 
+                myPicture.style.display = "block";
+                myPicture.setAttribute("src", "https://media.licdn.com/dms/image/C5603AQHcoZ6m_pXP3Q/profile-displayphoto-shrink_200_200/0?e=1550102400&v=beta&t=2fsXko798i90jYcY-XnrrVaRP56e1k1Omn0OD-XccSg");
+            });
+            
+            tab3.addEventListener("mouseover", function(e){
+                tab3.style.cursor = "pointer";
+                tab3.style.backgroundColor = "salmon";
+            });
+            tab3.addEventListener("mouseleave", function(e){
+                tab3.style.backgroundColor = "lightSalmon";
+            });
+            tab3.addEventListener("click", function(e){
+                if(content.hasChildNodes()){
+                content.removeChild(content.childNodes[0]); 
+                }
+                title.innerText = "Contact Information";
+                content.innerText = "";
+                content.appendChild(linkedIn);
+                linkedIn.style.display = "block";
+                linkedIn.style.cursor = "pointer";
+                linkedIn.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF4Nwwa_TVnunKCidsh_gin7DhLGPB5qQ4kNi14hPijmejH8C8");
+                content.appendChild(facebook);
+                facebook.style.display = "block";
+                facebook.style.cursor = "pointer";
+                facebook.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTvtWJhnbIlAHaZ00r9ICT-1GiIH-5PrAia36yaVZV2al99kjz");
+            });
+
+            linkedIn.addEventListener("click", function(e){
+                var linkedInAccount = document.createElement("a");
+                linkedInAccount.style.color = "white";
+                linkedInAccount.style.fontSize = "3rem";
+                linkedInAccount.style.display = "block";
+                linkedInAccount.style.cursor = "pointer";
+                linkedInAccount.setAttribute("href","https://www.linkedin.com/in/diana-agata-leonte/"); 
+                linkedInAccount.setAttribute("target","_blank"); 
+                linkedInAccount.innerText = "Access my LinkedIn account";
+                if(!linkedInClicked){
+                    content.prepend(linkedInAccount);
+                    linkedInClicked = true;
+                }
+               
+            });
+
+            facebook.addEventListener("click", function(e) {
+                var facebookAccount = document.createElement("a");
+                facebookAccount.style.color = "white";
+                facebookAccount.style.fontSize = "3rem";
+                facebookAccount.style.display = "right";
+                facebookAccount.style.display = "block";
+                facebookAccount.style.cursor = "pointer";
+                facebookAccount.setAttribute("href","https://www.facebook.com/dianaagata.leonte"); 
+                facebookAccount.setAttribute("target","_blank"); 
+                facebookAccount.innerText = "Access my Facebook account";
+                if(!facebookClicked){
+                    content.prepend(facebookAccount);
+                    facebookClicked = true;
+                }
+            });
+
+
+            tab4.addEventListener("mouseover", function(e){
+                tab4.style.cursor = "pointer";
+                tab4.style.backgroundColor = "salmon";
+            });
+            tab4.addEventListener("mouseleave", function(e){
+                tab4.style.backgroundColor = "lightSalmon";
+            });
+            tab4.addEventListener("click", function(e){
+                content.removeChild(linkedIn);
+                content.removeChild(facebook);
+                title.innerText = "Just a small example of a JavaScript function. Press the button in order to calculate the arithmetic average of two numbers.";
+                content.innerText = "";
+                content.appendChild(button);
+                button.setAttribute("type","button");
+                button.innerText = "Start";
+            });
+
+            button.addEventListener("click", function(e){
+                divideSum();
+            });
+            
+            function divideSum() {
+                var max = parseInt(prompt('Introdu primul numar'),10);
+                var min = parseInt(prompt('Introdu al doilea numar'),10);
+                var tmp ;
+                var suma = 0;
+                if (min > max){
+                tmp = max;
+                max = min;
+                min = tmp;
+                }
+                var numere = max - min + 1 ;
+               
+                for(; min<=max;min++){
+                suma = suma +min;
+                }
+                alert("Media aritmetica a celor doua numere este: " + suma/numere);
+            }
+        })();
+    </script>
+</body>
+</html>
